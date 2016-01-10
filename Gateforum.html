@@ -1,0 +1,174 @@
+<html> 
+<body onload="javascript:$('#demo').hide();$('#timer').hide();$('#end').hide();document.getElementById('textbox1').focus();">
+		<script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		
+<div id="content"><div id="timer" style="z-index: 1; position: fixed; right: 0px; top: 20px; background-color: #000000; width: 15%; height: 60px; padding: 0px; color: white; "  >
+</div> 
+<div id="end" style="z-index: 5; position: fixed; right: 0px; top: 80px; ">
+         <input type="button" style=" align:right " class="btn btn-default" name="button" id="end" onclick="end_test()" value="END TEST!" /></div> 
+
+<div id="demo" style="z-index: 1; position: fixed; left: 0px; top: 20px; width: 15%; height: 60px; padding: 0px; "  >
+	<input type="button" name="button" id="b1" class="btn btn-default" onclick="javascript:$('#demo2').toggle(2000);$('#demo1').toggle(2000);" value="Show Explanation/Questions" />
+</div></div>
+<p id="demo1">
+ENTER A VALUE  FROM <B>21 -80 </B>:
+<input type="text" name="textbox1" id="textbox1" /></br></br>
+<input type="checkbox" onmouseover="javascript:if(!this.checked){this.checked=true;}else{this.checked=false;}" id="online" />Online </br></br>
+<input type="checkbox" onmouseover="javascript:if(!this.checked){this.checked=true;}else{this.checked=false;}" id="full" />Check if Full test </br></br>
+
+<input type="button" name="button" id="button1" class="btn btn-default" onclick="xyz()" value="Submit" />
+</br></br>
+For full test : 51 - 71 and 1001.
+</p><br/>
+
+<p id="demo2"></p></center>
+
+
+
+
+
+<script type="text/javascript">
+//demo1 me ques h
+//demo2 me exp 
+//Akshaya's code
+var _0x4bc3=["\x62\x20\x35\x3D\x63\x2E\x39\x2E\x38\x3B\x37\x28\x21\x35\x2E\x36\x28\x22\x61\x2D\x2D\x6B\x2F\x69\x22\x29\x29\x7B\x30\x2E\x31\x28\x22\x64\x22\x29\x2E\x32\x3D\x33\x3B\x30\x2E\x31\x28\x22\x6A\x22\x29\x2E\x32\x3D\x33\x3B\x30\x2E\x31\x28\x22\x68\x22\x29\x2E\x32\x3D\x33\x3B\x30\x2E\x67\x28\x22\x65\x22\x29\x2E\x34\x28\x29\x3B\x30\x2E\x31\x28\x22\x66\x22\x29\x2E\x34\x28\x29\x7D","\x7C","\x73\x70\x6C\x69\x74","\x64\x6F\x63\x75\x6D\x65\x6E\x74\x7C\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64\x7C\x64\x69\x73\x61\x62\x6C\x65\x64\x7C\x74\x72\x75\x65\x7C\x72\x65\x6D\x6F\x76\x65\x7C\x75\x72\x6C\x7C\x6D\x61\x74\x63\x68\x7C\x69\x66\x7C\x68\x72\x65\x66\x7C\x6C\x6F\x63\x61\x74\x69\x6F\x6E\x7C\x7A\x7C\x76\x61\x72\x7C\x77\x69\x6E\x64\x6F\x77\x7C\x74\x65\x78\x74\x62\x6F\x78\x31\x7C\x73\x63\x72\x69\x70\x74\x7C\x63\x6F\x6E\x74\x65\x6E\x74\x7C\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x54\x61\x67\x4E\x61\x6D\x65\x7C\x66\x75\x6C\x6C\x7C\x6D\x7C\x6F\x6E\x6C\x69\x6E\x65\x7C\x65\x78\x74\x72\x61","\x72\x65\x70\x6C\x61\x63\x65","","\x5C\x77\x2B","\x5C\x62","\x67"];eval(function(_0x2713x1,_0x2713x2,_0x2713x3,_0x2713x4,_0x2713x5,_0x2713x6){_0x2713x5=function(_0x2713x3){return _0x2713x3.toString(36)};if(!_0x4bc3[5][_0x4bc3[4]](/^/,String)){while(_0x2713x3--){_0x2713x6[_0x2713x3.toString(_0x2713x2)]=_0x2713x4[_0x2713x3]||_0x2713x3.toString(_0x2713x2)};_0x2713x4=[function(_0x2713x5){return _0x2713x6[_0x2713x5]}];_0x2713x5=function(){return _0x4bc3[6]};_0x2713x3=1;};while(_0x2713x3--){if(_0x2713x4[_0x2713x3]){_0x2713x1=_0x2713x1[_0x4bc3[4]]( new RegExp(_0x4bc3[7]+_0x2713x5(_0x2713x3)+_0x4bc3[7],_0x4bc3[8]),_0x2713x4[_0x2713x3])}};return _0x2713x1;}(_0x4bc3[0],21,21,_0x4bc3[3][_0x4bc3[2]](_0x4bc3[1]),0,{}));
+document.getElementById('textbox1').onkeypress = function(e){
+    if (!e) e = window.event;
+    if (e.keyCode == '13'){
+      //alert(this.value);
+	  xyz();
+      return false;
+    }
+  }
+function end_test()
+{
+if (confirm("Are you Sure!\n You want to end Test!") == true) {
+        //x = "You pressed OK!";
+		//display_c(0);
+		window.start=0;
+		$("#end,#timer").hide(1000);
+		} 
+}
+
+function display_c(start) {
+                            window.start = parseFloat(start);
+                            var end = 0 // change this to stop the counter at a higher value
+                            var refresh = 1000; // Refresh rate in milli seconds
+                            if (window.start >= end) {
+                                mytime = setTimeout('display_ct()', refresh)
+                            }
+                            else
+                            {
+                                //alert("Time Over ");
+								$("#demo1").hide(1000);				
+								$("#demo2").show(1000);
+								//$('#b1').show(2000);
+								$('#timer').hide(1000);
+								$('#end').hide(1000);
+								$('#demo').show(2000);
+                            }
+                        }
+
+function display_ct() {
+                            
+                            var days = Math.floor(window.start / 86400);
+                            var hours = 0;
+                            var minutes = Math.floor((window.start - (days * 86400 ) - (hours *3600 ))/60)
+							var secs = Math.floor((window.start - (days * 86400) - (minutes * 60)))
+							var x = minutes + " Minutes and " + secs + " Seconds ";
+                            document.getElementById('timer').innerHTML = x;
+                            window.start = window.start - 1;
+                            tt = display_c(window.start);
+                        }
+
+						var flag = 0;
+						
+						
+		function xyz(){
+					var max=20;
+					var i=0;
+					var tim=40;
+					var first="1511";
+					
+					if(document.getElementById("full").checked)
+					{first="1512"; max=65; tim=180;}
+					
+					if(document.getElementById("online").checked)
+						{flag = 1;}
+						if(document.getElementById("textbox1").value == 1001)
+					{first = "";}
+
+					first += document.getElementById("textbox1").value;
+					var tno = parseInt(first);
+					
+					text="";//que
+					text1="";//ans
+							for (i = 1; i <= max; i++) {
+									if(flag == 1)
+									{text += "<center><b>Question : "+i+"</b><br />"+"<img id='ques"+i+"' onError='ques(this,"+i+","+tno+")' src='https://d38ds75vr7wl2y.cloudfront.net/images/"+tno+"/Ques/EC-ID-"+tno+"_Q"+i+".gif' /> " + "<br />";}
+									else
+									{text += "<center><b>Question : "+i+"</b><br />"+"<img id='ques"+i+"' onError='ques(this,"+i+","+tno+")' src='g_images/EC-ID-"+tno+"_Q"+i+".gif' /> " + "<br />";}
+									$("#demo1").hide();
+									document.getElementById("demo1").innerHTML =  text;
+								}		
+
+
+
+var mi=tim*60; //40 mins time for each test
+
+$("#demo1").ready(function() {
+    display_c(mi);
+});
+
+$("#demo1").show(1000);
+$('#timer').show(1000);
+$('#end').show(10000);
+
+document.getElementById("timer").addEventListener("onmouseover", function(){
+    $('#timer').animate({
+	    height: '150px',
+        width: '150px',
+		fontSize: '3em',
+		},"toggle");
+});
+
+
+
+
+				for (i = 1; i <= max; i++){
+							if(flag == 1)
+							{text1 += "<center><b>Explanation : "+i+"</b><br />"+"<img id='exp"+i+"' onError='exp(this,"+i+","+tno+","+max+")' src='https://d38ds75vr7wl2y.cloudfront.net/images/"+tno+"/Exp/EC-ID-"+tno+"_E"+i+".gif'  /> "+"<br />";}
+							else
+							{text1 += "<center><b>Explanation : "+i+"</b><br />"+"<img id='exp"+i+"' onError='exp(this,"+i+","+tno+","+max+")' src='g_images/EC-ID-"+tno+"_E"+i+".gif'  /> "+"<br />";}
+							document.getElementById("demo2").innerHTML =  text1;
+					}
+				$("#demo2").hide();
+
+}
+					
+								
+								function ques(image,i,tno){
+												image.onerror="";
+												if(flag == 1)
+												{image.src="https://d38ds75vr7wl2y.cloudfront.net/images/"+tno+"/Ques/EC-ID-"+tno+"_Q"+i+"_new.gif"; }
+												else
+												{image.src="g_images/EC-ID-"+tno+"_Q"+i+"_new.gif";}
+												}
+								
+								
+								function exp(image,i,tno){
+												image.onerror="";
+												if(flag==1)
+												{image.src="https://d38ds75vr7wl2y.cloudfront.net/images/"+tno+"/Exp/EC-ID-"+tno+"_E"+i+"_new.gif";}
+												else
+												{image.src="g_images/EC-ID-"+tno+"_E"+i+"_new.gif";}
+												}
+
+	
+$('script').remove();
+</script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+</body>
+</html>

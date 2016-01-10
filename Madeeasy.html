@@ -1,0 +1,312 @@
+<html>
+        
+		<script type="text/javascript" src="js/jquery.js"></script>
+		 <script type="text/javascript" src="js/New.js"></script>
+       
+
+
+		<body  onload="shuru()"   style="-webkit-touch-callout: none;    -webkit-user-select: none;    -khtml-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none;">
+		<center><p id="marks"></p></center>
+<div id="sidebox" style=" position: fixed; right: 0px; top: 20px; display:none; background-color: #FF0000; width: 22%; height: 90%; padding: 0px; color: white;  ">
+
+	<div id="timer" style=" position: fixed; right: 0px; top: 20px; background-color: #000000; width: 22%; height: 60px; padding: 0px; color: white;  ">
+	</div> </br> </br> </br></br>
+		<div id="que_box" style="overflow: auto; background-color: #0066FF; width: 99%; height: 80%; color: white;">
+		</div></br>
+			<div id="end" style="right: 0%; top: 90%;">
+			<center> <input type="button" style=" align:right "name="button" class="btn btn-default" onclick="end_test()" value="END TEST!" /></center>
+			</div>
+</div>
+
+<div class="form-inline" id="xyz">
+ENTER A VALUE  :
+<input type="text" name="textbox1" class="form-control" id="textbox1" >
+<input type="button" name="button" id="button1" class="btn btn-default" onclick="xyz()" value="Submit" />
+</br></br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="checkb"  onmouseover="javascript:if(!this.checked){this.checked=true;}else{this.checked=false;}" >Online</input></br></br>
+<div id="testlist">Double Click For Tests List for a Branch. Click To start the test.
+<div ondblclick="$('#t1').toggle(2000);$('#t2,#t3,#t4,#t5,#t6').hide(1000);" ></br>1.) MECHANICAL ENGINEERING</div></br><div id="t1"  style="color : blue; "></div>
+<div ondblclick="$('#t2').toggle(2000);$('#t1,#t3,#t4,#t5,#t6').hide(1000);"></br>2.) CIVIL</div></br><div id="t2" style="color : blue;" ></div>
+<div ondblclick="$('#t3').toggle(2000);$('#t2,#t1,#t4,#t5,#t6').hide(1000);"></br>3.) ELECTRICAL</div></br><div id="t3" style="color : blue;" ></div>
+<div ondblclick="$('#t4').toggle(2000);$('#t2,#t3,#t1,#t5,#t6').hide(1000);"></br>4.) ELECTRONICS</div></br><div id="t4" style="color : blue;" ></div>
+<div ondblclick="$('#t5').toggle(2000);$('#t2,#t3,#t4,#t1,#t6').hide(1000);"></br>5.) COMPUTERS</div></br><div id="t5" style="color : blue;" ></div>
+<div ondblclick="$('#t6').toggle(2000);$('#t2,#t3,#t4,#t5,#t1').hide(1000);"></br>6.) INSTRUMENTATION</div></br><div id="t6"  style="color : blue;" ></div>
+</div></div>
+
+<div id="content" style="overflow: auto; width:75%"></div>
+<div id="pqr" ><button class="btn btn-default" id="btn2">Show Explantation</button></div>
+<div id="ans"><b><u>Explanation :</b></u> </br></div>
+
+<script type='text/javascript'>
+
+var usrans = [];
+var marks = [];
+var data1;
+var ans2;
+var flag=0;
+var totalmarks=0;
+
+document.getElementById('textbox1').onkeypress = function(e){
+    if (!e) e = window.event;
+    if (e.keyCode == '13'){
+      //alert(this.value);
+	 xyz();
+      return false;
+    }
+  }
+
+		function calc(){
+							var max = document.getElementsByTagName("input").length - 2;
+							for(var i=0 ; i<max ; i++)
+								{	
+									var a = i+"ans";
+									var b = "#"+a;
+									var k = i;
+									var tempq = "qu"+k;
+									var ans = document.getElementsByName(a);
+														if( ans.length == 1 ){ //numerical type
+														var b = k+"ansn";
+														var val = document.getElementById(b).value;
+														//val = parseFloat(val);
+														//if(val == NaN){ usrans[k] = "NA";}
+														if(val == undefined){ usrans[k] = "NaN";}
+														//else if (val !=  "null" )
+														else {														
+														usrans[k] = val;}
+														
+														if(usrans[k] == "" ){marks[k]=0;}
+														
+														var str =   ans2[k-1].split(" ")[0];// right ans
+														var rans = parseFloat(str);
+														var first = rans - 0.5;
+														var second = rans + 0.5; 
+														
+														
+														if (usrans[k] !=  "" ){
+														if(usrans[k] == str){marks[k]= data1[tempq].RIGHT_MARKS;}
+														else if( usrans[k] >= first){if( usrans[k] <= second ){marks[k]= data1[tempq].RIGHT_MARKS;}else {marks[k]=0;}}
+														else {marks[k]=0;}
+														}
+														
+														
+													}
+												if(ans.length == 4){ //options wale
+														var opta = k+"ansa";var optb = k+"ansb";var optc = k+"ansc";var optd = k+"ansd";
+														if ( document.getElementById(opta).checked ) { usrans[k] = "a";}
+														else if ( document.getElementById(optb).checked ) { usrans[k] = "b";}
+														else if ( document.getElementById(optc).checked ) { usrans[k] = "c";}
+														else if ( document.getElementById(optd).checked ) { usrans[k] = "d";}
+														else {marks[k] = 0; usrans[k]="NA";}
+																											
+														
+														if(usrans[k] == ans2[k-1]){marks[k]= data1[tempq].RIGHT_MARKS;}
+														else if(usrans[k] != "NA" ){marks[k]=data1[tempq].WRONG_MARKS*(-1)}
+													}
+												}
+												marks[0]=0;
+												
+											for(var m = 1;m < marks.length; m++ )
+													{marks[0] = parseFloat(marks[0]) + parseFloat(marks[m]) }
+													totalmarks=parseFloat(marks[0]);
+													document.getElementById("marks").innerHTML ="<b>Your Marks are  :  <font color='red'>"+totalmarks.toFixed(2)+"<b></font>";
+													
+													if(flag == 0){
+													for(var j=0;j<ans2.length;j++){ 
+													document.getElementById("ans").innerHTML = '<center><img src="5.gif" ></center>';
+																	var k=j+1;
+																	pqrs += "</br><b>"+k+" Correct Answer :</b>    "+ans2[j];
+																	if(marks[k] > 0){
+																					pqrs += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='green'><b>Your Answer:</b> "+usrans[k]+"</font></br></br>";}
+																		else if (marks[k] < 0 ){
+																					pqrs += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'><b>Your Answer:</b> "+usrans[k]+"</font></br></br>";
+																		}
+																		else {
+																					pqrs += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='blue'><b>Your Answer:</b> "+usrans[k]+"</font></br></br>";
+																		}
+																		
+																		var tempqu = "qu";
+																		tempqu += k;
+																	pqrs += data1[tempqu]["ENGLISH"].SOLUTION+"</br></br>";
+																	}	
+															setTimeout(function (){document.getElementById("ans").innerHTML = pqrs;},3000);			
+																flag++;}
+
+					for(var t=0;t<max;t++)//hide options
+									{
+										var hida ="#hide"+t;
+										$(hida).remove();
+									}
+																		
+					
+					}
+var pqrs = "";
+function end_test()
+{
+if (confirm("Are you Sure!\n You want to end Test!") == true) {
+        //x = "You pressed OK!";
+		window.start = 0; } else {
+			//continue;
+			//x = "You pressed Cancel!";
+		}
+}
+function display_c(start) {
+                            window.start = parseFloat(start);
+                            var end = 0 // change this to stop the counter at a higher value
+                            var refresh = 1000; // Refresh rate in milli seconds
+                            if (window.start >= end) {
+                                mytime = setTimeout('display_ct()', refresh)
+                            }
+                            else
+                            {
+                               // alert("Time Over ");
+								
+							   	$("#content").hide();		//que		
+								$("#ans").show(); //ans
+								calc();
+								$("#xyz").show(1000);//text box test no. wala part which changes
+								$("#pqr").show(2000);//explanation button
+								$('#sidebox,#timer,#end').hide(1000);//timer
+								$('#marks').show(2000);
+															
+                               
+                            }
+                        }
+
+function display_ct() {                           
+                        var days = Math.floor(window.start / 86400);
+                        var hours = 0;
+						var minutes = Math.floor((window.start - (days * 86400 ) - (hours *3600 ))/60)
+						var secs = Math.floor((window.start - (days * 86400) - (minutes * 60)))
+                        var x = minutes + " Minutes and " + secs + " Seconds ";
+						document.getElementById('timer').innerHTML = x;
+                        window.start = window.start - 1;
+						tt = display_c(window.start);
+					}
+var textbox;
+					
+					
+					
+					function xyz () {
+										//initialise
+										var n = document.getElementById("textbox1").value;
+										textbox=n;
+										if(!document.getElementById("checkb").checked)
+										{document.body.appendChild(document.createElement('script')).src='json/'+n+'.json';}
+										else {document.body.appendChild(document.createElement('script')).src='https://s3-ap-southeast-1.amazonaws.com/gw-mdsy/test/'+n+'.json';}
+										$("#pqr").hide();//EXp button
+										$( "script" ).remove();
+							}	
+
+ 
+var tq;
+
+function jsondata (data) { 				
+			$( "script" ).remove();
+			var arr = data;
+			data1=data;
+			var ans = [];
+			//console.log(arr);
+			tq = arr.LANGHINDI;	
+			
+			if(tq == 1){tq=34;}
+			if(arr.LANGHINDI == undefined ){tq=61;}
+			var text ="";
+			var tempqu ="";
+			var lang = "ENGLISH";
+			var k=1;
+			var i=tq;
+			//$("#content").hide();
+				for( k=1;k < tq;k++){//chnge //questions
+									tempqu = "qu"+k;
+									ans[k-1] = arr[tempqu][lang].CORRECT_ANSWER;
+									var tpcid = arr[tempqu].TOPIC_ID;
+									tpcid = parseInt(tpcid);
+									console.log(tpcid);
+									console.log(sub[tpcid]);						
+									text += "</br><div id='que"+k+"'><b>Question :"+k+"</b>  ("+sub[tpcid]+")</br>";
+									text += arr[tempqu][lang].QUESTION_TEXT+"</br>";
+									if(arr[tempqu][lang].OPT2 != undefined){
+									text += "<b>A.)</b>  "+arr[tempqu][lang].OPT1+"</br>";
+									text += "<b>B.)</b>  "+arr[tempqu][lang].OPT2+"</br>";
+									text += "<b>C.)</b>  "+arr[tempqu][lang].OPT3+"</br>";
+									text += "<b>D.)</b>  "+arr[tempqu][lang].OPT4+"</br></br><div id='hide"+k+"'>";//
+									text += 'A. <input type="radio" name="'+k+'ans" onmouseover="javascript:if(!this.checked){this.checked=true;changetagtru('+k+');}else{this.checked=false;changetagfal('+k+');}" id="'+k+'ansa"/>  ';
+									text += 'B. <input type="radio" name="'+k+'ans" onmouseover="javascript:if(!this.checked){this.checked=true;changetagtru('+k+');}else{this.checked=false;changetagfal('+k+');}" id="'+k+'ansb"/>  ';
+									text += 'C. <input type="radio" name="'+k+'ans" onmouseover="javascript:if(!this.checked){this.checked=true;changetagtru('+k+');}else{this.checked=false;changetagfal('+k+');}" id="'+k+'ansc"/>  ';
+									text += 'D. <input type="radio" name="'+k+'ans" onmouseover="javascript:if(!this.checked){this.checked=true;changetagtru('+k+');}else{this.checked=false;changetagfal('+k+');}" id="'+k+'ansd"/>  ';
+									text += "</div></div></br></br>";
+									}
+				else{
+					text +='<i>NUMERICAL TYPE</i></br><div id="hide'+k+'"><input name="'+k+'ans" onfocusout="changetagnum(this,'+k+');" type="text" maxlength="8" id="'+k+'ansn" /></br></div></br>';
+					}
+				
+				}
+				
+document.getElementById("content").innerHTML=text;
+floodq ();//sidebox me que k dibey
+//$("#content").hide();	
+//$("#content").show(1000);
+$('#sidebox,#timer,#end').show(1000);
+
+
+var coma="'";
+document.getElementById("xyz").innerHTML='<input type="button" class="btn btn-default" value="Show Questions" onclick="javascript:$('+coma+'#content'+coma+').toggle(2000);" ></input>';
+ $("#xyz").hide();			
+
+ //checking images
+ setTimeout(function(){
+ var img = document.images;
+ for(var fy=0;fy<img.length;fy++)
+ {
+ var str = img[fy].src;
+	if(str[0] != 'd' ){
+					var strnew = str.slice(str.search("/m"));
+					str ="http://onlinetestseriesmadeeasy.in"+strnew;
+					img[fy].src = str;
+					 }
+ }
+ },1000);
+
+
+//questions loaded now timer
+var numi=i-1;
+var mi = prompt("Enter Time you need in mins \n Test have "+numi+" no of questions.");
+mi=mi*60;
+if(mi != 0)
+display_c(mi);
+else
+display_c(30*60);
+
+
+	
+	
+	//answers
+			
+						
+ans2=ans;
+mflag = 1;
+
+//subject name on the top
+var subjectno = parseFloat(arr["qu5"].TOPIC_ID);
+document.getElementById("marks").innerHTML = "Subject : <b>"+sub[subjectno]+"</b>";
+}
+
+$("#btn2").click(function(){
+        $("#ans").toggle(1000);
+
+    });
+
+$( "script" ).remove();
+load_list();
+
+
+
+</script>
+<script>
+eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('8 3=4.f.g;8 5="z--h/m";i(!3.e(5)){1.0("d").6=7;1.0("c").6=7;1.0("b").2();1.0("9").2();1.0("k").2();1.0("u").x="<a y=\'w:4.t();\'>n l o p r q j s v</a>"}',36,36,'getElementById|document|remove|url|window|blah|disabled|true|var|pqr||testlist|checkb|textbox1|match|location|href|extra|if|THIS|ans|ARE||YOU|NOT|ALLOWED|VIEW|TO|TEST|close|content|SERIES|javascript|innerHTML|onclick|'.split('|'),0,{}))
+
+</script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
+<!--      <script type="text/javascript" src="js/jquery.js"></script> -->
+
+<body onload="xyz(i)">
+    <p id="f"></p>
+    <p id="t"></p>
+    
+    <script>
+        var i = 1;
+        var max = 30;
+        var prev;
+        var xhr;
+        function xyz(i) {
+            var chat = "http://chat567.zz.mu/proxy.php?url=http://online-tests.aceenggacademy.com/onlineTestProcess.jhtm?tId=3&tcId=3&qoId="+i+"&local=true";
+            if (i <= max) {
+                var newd = document.createElement('div');
+                var qu = "que" + i;
+                newd.id = qu;
+                newd.innerHTML = "<b>Loading Question :" + i + "....</b>  <img src=\"5.gif\" >";
+                prev = i;
+                document.body.appendChild(newd);
+                xhr = $.get(chat, {
+                        cache: true
+                    },
+                    function(data, status) {
+                        var j = i + 1;
+                        if (status == 'success') {
+                            document.getElementById(qu).innerHTML = data;
+                            xyz(j);
+                        } else {
+                            j--;
+                            setTimeout(xyz(j), 2000);
+                        }
+                    });
+            }
+        }
+
+        var startt = 0;
+      
+    </script>
+</body>

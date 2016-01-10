@@ -1,0 +1,97 @@
+<html>
+<head></head>
+<body onload="floodoptn();	">
+ <script type="text/javascript" src="link.js"></script>
+
+<div id="t">
+
+
+</div>
+<div id="btn">
+<input type="button" value="add" onclick="xyz();"></input>
+<input type="button" value="find" onclick="find()"></input>
+</div>
+
+
+
+
+</body>
+<script>
+//R 187 near abhinandan hotel sector 4 airoli
+
+var opt =["mother","father","grand-mother","grand-father","sister","brother","son","daugther","cousin","spouse"];
+var arr_left=[];
+var arr_right=[];
+var rltn = [];
+var text = "";
+var count = 1;
+				function floodoptn(){
+						for(var i=0;i<opt.length;i++){
+									document.getElementById('optn').innerHTML += "<option value='"+i+"'>"+opt[i]+"</option>";
+							}
+					}
+document.getElementById('t').innerHTML = '<input type="text" id="L'+count+'" onfocusout="checkb(this)"></input> <span id="f'+count+'"> is <select id="optn"></select> of </span> <input type="text" id="R'+count+'" onfocusout="checkb(this)" ></input><br><br>';
+var flag = 0;
+function xyz(){
+			count++;
+			if(count != 1){
+			var z = count-1;
+			var f = 'f'+z;
+			var  l = "L"+z;
+			var r  = "R"+z;
+			
+			var left = document.getElementById(l).value;
+			arr_left.push(left);
+			var right = document.getElementById(r).value;
+			arr_right.push(right);
+			
+			rltn.push(opt[document.getElementById('optn').value]);
+			document.getElementById(l).remove();
+			document.getElementById(r).remove();
+			
+			document.getElementById(f).innerHTML = left+" is <b> "+opt[document.getElementById('optn').value]+" </b> of "+right;
+			if(flag == 0)
+			{document.getElementById('t').innerHTML += '<input type="text" id="L'+count+'" onfocusout="checkb(this)" ></input> <span id="f'+count+'"> is <select id="optn"></select> of </span> <input type="text" id="R'+count+'" onfocusout="checkb(this)" ></input><br><br>';
+			
+			//document.getElementById('optn').remove();
+			//document.getElementById('btn').remove();
+			//document.getElementById('t').innerHTML += text;
+			floodoptn();	}
+			}
+		}
+
+		
+
+		
+function checkb(obj){
+
+if(obj.value == ''){
+alert('enter some value');
+}
+else {
+var str = obj.value;
+if( str.search(' ') != -1 )
+{alert('spaces not allowed'); obj.value='';}
+else{
+var l = "L"+count;
+if(obj.id != l){
+if(obj.value == document.getElementById(l).value){
+alert('cant be same'); obj.value='';}
+}
+}
+}
+
+}
+		
+		document.getElementById('L1').focus();
+
+		
+		
+		function find(){
+							flag=1;
+							xyz();
+							document.getElementById('btn').innerHTML = "Ans";
+							linker();
+					}
+</script>
+</html>

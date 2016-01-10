@@ -1,0 +1,51 @@
+<script src="js/pace.js"></script>
+<link rel="stylesheet" href="css/css.css">
+<p id="t"></p>
+<script>
+var sub = ["81","Strength of Material","RCC","Environment Engineering","Transportation Engineering","Fluid Mechanics and Hydraulics","Engineering Mathematics","Genral Aptitude","Structural Engineering","Soil Mechanics &amp; Foundation Engineering","Steel Structures","Hydrology &amp; Irrigation","Surveying","TOM &amp; Vibrations","Thermodynamics","Industrail Engineering","Fluid Mechanics","Heat Transfer","Manufacturing Engineering","RAC &amp; Engineering Mechanics","I.C Engine, Power Plant, Material Science","Machine Design","Networks","Control Systems","Electrical Machines","Power Systems","Signals &amp; Systems","Power Electronics &amp; Drivers","Electrical &amp; Electronics Measurement","Digital Electronics","Analog Electronics","Microprocessors, EMT","Electronics Devices","Electromagnetics","Analog Communication Systems","Digital Communication System","Theory of Computation","Algorithms","Computer Organization and Architecture","Operating Systems","Databases","Programming and Data Structures","Computer Networks","Digital Logic","Compiler Design","Web Technologies, Information Systems and Software","Basics of Circuits and Mesurement Systems","Control Systems and Process Control","Process Dynamics &amp; Control,Static and Dynamic characteristics of Measurement Systems, Error and Uncertainty analysis, Statical analysis of data and curve fittings","Transducers, Mechanical Measurements &amp; Industrial Instrumentation","Communications","Analytical, Optical &amp; Bio medical Instrumentation","Digital Electronics &amp; Microprocessors","Microprocessors","Electronics Communication","Technical &amp; Engineering Mathematics","CIVIL ENGINEERING","COMPUTER SCIENCE","ELECTRONICS ENGINEERING","ELECTRONICS ENGINEERING","ELECTRICAL ENGINEERING","INSTRUMENTATION ENGINEERING","INSTRUMENTATION ENGINEERING","MECHANICAL ENGINEERING","NETWORK THEORY","PDC, ERROR &amp; UNCERTAINTY ANALYSIS","POWER ELECTRONICS","DBMS","STRUCTURAL ANALYSIS","PDS","SWT","MATHEMATICS","E & T","ELECTRICAL Engineering","Comprehension","Spotting Errors","Sentence Improvement","Reconstructing Passage","Fill in the Blanks","Synonyms","Antonyms","GENERAL STUDIES"];
+
+//var sub = [1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,7,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7];
+
+var tpc = [1,2,3,5,6,7,4,68,9,10,11,12,1,2,3,5,6,7,4,68,9,10,11,12,7,7,7,7,7,7,7,7,7,7,7,7,13,14,15,1,6,7,16,17,18,19,20,21,13,14,15,1,6,7,16,17,18,19,20,21,7,7,7,7,7,7,7,7,7,7,7,7,64,23,24,25,6,7,26,66,28,29,30,31,22,23,24,25,6,7,26,27,28,29,30,31,7,7,7,7,7,7,7,7,7,7,7,7,64,23,32,33,6,7,26,34,35,29,30,53,22,23,32,33,6,7,26,34,35,29,30,30,7,7,7,7,7,7,7,7,7,7,7,7,36,37,38,39,6,7,67,69,42,43,44,70,36,37,38,39,71,7,67,69,42,43,44,70,7,7,7,7,7,7,7,7,7,7,7,7,46,47,49,65,6,7,26,50,28,51,30,52,46,47,49,62,6,7,26,50,28,51,30,52,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,58,7,61,7];
+
+var sub2 = ["71","Strength of Material","RCC","Environment Engineering","Transportation Engineering","Fluid Mechanics and Hydraulics","Engineering Mathematics","Genral Aptitude","Structural Engineering","Soil Mechanics &amp; Foundation Engineering","Steel Structures","Hydrology &amp; Irrigation","Surveying","TOM &amp; Vibrations","Thermodynamics","Industrail Engineering","Fluid Mechanics","Heat Transfer","Manufacturing Engineering","RAC &amp; Engineering Mechanics","I.C Engine,Power Plant,Material Science","Machine Design","Networks","Control Systems","Electrical Machines","Power Systems","Signals &amp; Systems","Power Electronics &amp; Drivers","Electrical &amp; Electronics Measurement","Digital Electronics","Analog Electronics","Microprocessors,EMT","Electronics Devices","Electromagnetics","Analog Communication Systems","Digital Communication System","Theory of Computation","Algorithms","Computer Organization and Architecture","Operating Systems","Databases","Programming and Data Structures","Computer Networks","Digital Logic","Compiler Design","Web Technologies,Information Systems and Software","Basics of Circuits and Mesurement Systems","Control Systems and Process Control","Process Dynamics &amp; Control,Static and Dynamic characteristics of Measurement Systems,Error and Uncertainty analysis,Statical analysis of data and curve fittings","Transducers,Mechanical Measurements &amp; Industrial Instrumentation","Communications","Analytical,Optical &amp; Bio medical Instrumentation","Digital Electronics &amp; Microprocessors","Microprocessors","Electronics Communication","Technical &amp; Engineering Mathematics","CIVIL ENGINEERING","COMPUTER SCIENCE","ELECTRONICS ENGINEERING","ELECTRONICS ENGINEERING","ELECTRICAL ENGINEERING","INSTRUMENTATION ENGINEERING","INSTRUMENTATION ENGINEERING","MECHANICAL ENGINEERING","NETWORK THEORY","PDC,ERROR &amp; UNCERTAINTY ANALYSIS","POWER ELECTRONICS","DBMS","STRUCTURAL ANALYSIS","PDS","SWT","MATHEMATICS","E & T"];
+
+var text = "";
+var arr = [];
+var n =297;
+
+function xyz(){
+			//document.getElementById("t").innerHTML += i + ': '+(n-1)+' : '+sub[parseInt(tpcb[i])]+'</br>';
+			if(subb[i] !=10)
+			document.getElementById("t").innerHTML += '"'+(n-1)+'":"'+sub[parseInt(tpcb[i])]+'",';
+			else
+			document.getElementById("t").innerHTML += '"'+(n-1)+'":"GENERAL STUDIES",';
+			i++;
+	}
+var data;
+var subb = [];
+var tpcb = [];
+var i =0;
+
+function jsondata(arr1){ 
+subb[i] = arr1["qu30"].SUBJECT_ID;
+tpcb[i] = arr1["qu30"].TOPIC_ID;
+xyz();
+}
+
+
+setInterval(function() {
+if(n < 500 )
+{document.body.appendChild(document.createElement('script')).src ='json/'+n+'.json';
+n++;}
+console.log(n);
+},100);
+
+</script>
+
+
+
+
+
+
+

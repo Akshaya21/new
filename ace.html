@@ -1,0 +1,36 @@
+<script src="js/pace.js"></script>
+<link rel="stylesheet" href="css/css.css">
+<form action="javascript:yo()" >
+<input type="textbox" id="t" />
+<input type="checkbox" id="c"  > check for loop </input>
+
+<centre><input type="button"  onclick="javascript:location.reload()" value="refresh"> </centre>
+</form>
+
+<iframe id="fram" width="100%"  style="overflow:auto" height="100%"  frameborder ="0" alt="kuch nhi h" src="" ></iframe>
+
+<script>
+
+
+var i=0;
+var text;
+
+function xyz(){
+
+document.title ="Test no.:"+i;
+var k = document.getElementById("fram");
+k.src = "http://online-tests.aceenggacademy.com/onlineTestProcess.jhtm?tId="+i+"&tcId="+i+"&qoId=1";
+setTimeout(function (){var j = window.frames[0];
+text = j.document;
+console.log(text);},1000);
+
+}
+function yo (){
+if(document.getElementById("c").checked)
+{setInterval(function (){   xyz(); i++; document.getElementById("t").value = i; },7000);}
+else
+{i = parseInt(document.getElementById("t").value); xyz();
+}
+}
+
+</script>

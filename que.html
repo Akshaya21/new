@@ -1,0 +1,41 @@
+<html>
+<body onload="xyz()">
+
+<p id="yeah"></p>
+
+
+<script>
+
+function xyz()
+{var i=0;
+
+
+text="";
+   
+for (i = 1; i <= 9; i++) 
+{
+    text += "<center><b>Question GA: "+i+"</b><br />"+"<img id='ques"+i+"' src='https://qp.digialm.com///Online//touchstone//adcimages/1423479461886/20509/585_1887_587436_1416738331417_ga_1_0"+i+".jpg' /> " + "<br />";
+    
+}
+text += "<center><b>Question GA: "+i+"</b><br />"+"<img id='ques"+i+"' src='https://qp.digialm.com///Online//touchstone//adcimages/1423479461886/20509/585_1887_587436_1416738331417_ga_1_"+10+".jpg' /> " + "<br />";
+
+for (i = 1; i <= 9; i++) 
+{
+    text += "<center><b>Question EC: "+i+"</b><br />"+"<img id='ques"+i+"' src='https://qp.digialm.com///Online//touchstone//adcimages/1423479461886/20509/585_1887_587436_1416738331417_ec_1_0"+i+".jpg' /> " + "<br />";
+    
+}
+
+
+for (i = 10; i <= 55; i++) 
+{
+    text += "<center><b>Question EC : "+i+"</b><br />"+"<img id='ques"+i+"' src='https://qp.digialm.com///Online//touchstone//adcimages/1423479461886/20509/585_1887_587436_1416738331417_ec_1_"+i+".jpg' /> " + "<br />";
+    
+}
+
+document.getElementById("yeah").innerHTML =  text;
+
+
+}
+</script>
+</body>
+</html>

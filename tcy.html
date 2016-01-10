@@ -1,0 +1,76 @@
+<script src="js/pace.js"></script>
+<link rel="stylesheet" href="css/css.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
+   <script type="text/javascript" src="js/jquery.js"></script> 
+
+<body onload="xyz(28)">
+    <p id="f"></p>
+    <p id="t"></p>
+    <style>
+        .QBYQ_questioncorrect {
+            color: green;
+        }
+    </style>
+    <script>
+        var i = 1;
+        var max = 30;
+        var prev;
+        var xhr;
+        function xyz(i) {
+            var chat = "http://chat567.zz.mu/proxy1.php?url=http://www.tcyonline.com/Analyse/change-question-wise.php?pNo=" + i;
+            if (i <= max) {
+                var newd = document.createElement('div');
+                var qu = "que" + i;
+                newd.id = qu;
+                newd.innerHTML = "<b>Loading Question :" + i + "....</b>  <img src=\"5.gif\" >";
+                prev = i;
+                document.body.appendChild(newd);
+                xhr = $.get(chat, {
+                        cache: true
+                    },
+                    function(data, status) {
+                        var j = i + 1;
+                        if (status == 'success') {
+                            document.getElementById('f').innerHTML += data;
+                            var text = "";
+                            var ans = "";
+                            if (!document.getElementsByClassName('ExplanationTxt')[0]) {
+                                ans = "NO SOLUTION AVAILABLE";
+                            } else {
+                                ans += document.getElementsByClassName('ExplanationTxt')[0].innerHTML;
+                            }
+                            text += "<br>" + i + " :" + document.getElementsByClassName('QBYQ_question_main_over')[0].innerHTML + "<br>";
+                            text += "EXPLANATION:" + "<br>";
+                            text += ans + "<br>";
+                            imgchk();
+
+                            document.getElementById('f').innerHTML = "";
+
+                            newd.innerHTML = text;
+                            //document.getElementById('t').innerHTML += text;
+                            xyz(j);
+                        } else {
+                            j--;
+                            setTimeout(xyz(j), 2000);
+                        }
+                    });
+            }
+        }
+
+        var startt = 0;
+        function imgchk() {
+            var im = document.images;
+            for (var i = startt; i < im.length; i++) {
+                var str = im[i].src;
+                if (str.match('file') && !str.match('5.gif')) {
+                    str = str.split('/');
+                    //console.log(str);
+                    im[i].src = "http://www.tcyonline.com/onlinetest/" + str[str.length - 2] + "/" + str[str.length - 1];
+                }
+                startt = im.length;
+            }
+        }
+    </script>
+</body>
